@@ -14,8 +14,8 @@ var questionsArray = [
   "Which one of these is falsey?",
   "jibberish",
 ];
-var answersArray = ["1", "2", "3", "4", "1", "1", "1", "1", "1", "1"];
-var correctAnswers = [];
+var answersArray = ["a", "b", "c", "d", "1", "1", "1", "1", "1", "1"];
+var correctAnswers = ["a", "52"];
 var questionCount = 0;
 var question = document.querySelector(".question");
 startButton.addEventListener("click", function () {
@@ -28,6 +28,38 @@ startButton.addEventListener("click", function () {
     answer.textContent = answersArray[i];
   }
 });
+function isCorrect() {
+  if (answersArray[i] === correctAnswers[0]) {
+    console.log("here");
+  }
+  console.log(i);
+}
+
+var button1 = document.querySelector(".btn1");
+button1.addEventListener("click", function () {
+  if (button1.textContent === correctAnswers[0]) {
+    console.log("hi");
+    questionCount++;
+  }
+});
+var button2 = document.querySelector(".btn2");
+button2.addEventListener("click", function () {
+  if (button2.textContent === correctAnswers[0]) {
+    console.log("hi");
+  }
+});
+var button3 = document.querySelector(".btn3");
+button3.addEventListener("click", function () {
+  if (button3.textContent === correctAnswers[0]) {
+    console.log("hi");
+  }
+});
+var button4 = document.querySelector(".btn4");
+button4.addEventListener("click", function () {
+  if (button4.textContent === correctAnswers[0]) {
+    console.log("hi");
+  }
+});
 
 var secondsLeft = 100;
 
@@ -36,4 +68,8 @@ function setTime() {
     secondsLeft--;
     timeElement.textContent = secondsLeft;
   }, 1000);
+
+  if (secondsLeft === 0) {
+    clearInterval(timerInterval);
+  }
 }
