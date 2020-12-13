@@ -14,7 +14,7 @@ var questionsArray = [
   "Which one of these is falsey?",
   "jibberish",
 ];
-var answers = ["1","1","1","1","1","1","1","1","1","1",];
+var answersArray = ["1", "2", "3", "4", "1", "1", "1", "1", "1", "1"];
 var correctAnswers = [];
 var questionCount = 0;
 var question = document.querySelector(".question");
@@ -23,10 +23,10 @@ startButton.addEventListener("click", function () {
   homepage.remove();
   questContainer.classList.remove("question-container");
   question.textContent = questionsArray[0];
-  for (var i=0; i<4; i++){
-      var 
+  for (var i = 0; i < 4; i++) {
+    var answer = document.querySelector(".btn" + (i + 1));
+    answer.textContent = answersArray[i];
   }
-
 });
 
 var secondsLeft = 100;
