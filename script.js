@@ -39,52 +39,64 @@ startButton.addEventListener("click", function () {
   }
 });
 
-// function that runs to input second question in place of the first
-function secondQuestion() {
-  questionCount++;
-  question.textContent = questionsArray[questionCount];
-  for (var i = 0; i < 4; i++) {
-    var answer = document.querySelector(".btn" + (i + 1));
-
-    answer.textContent = answersArray[questionCount][i];
-
-    console.log("correct");
-  }
-}
 // Buttons and functions that will follow the question
 var button1 = document.querySelector(".btn1");
 button1.addEventListener("click", function () {
   if (button1.textContent === correctAnswer[questionCount]) {
   } else {
     secondsLeft -= 10;
+    alert("Wrong! -10 Points");
   }
-  secondQuestion();
+  nextQuestion();
 });
 var button2 = document.querySelector(".btn2");
 button2.addEventListener("click", function () {
   if (button2.textContent === correctAnswer[questionCount]) {
-    console.log("hi");
   } else {
     secondsLeft -= 10;
+    alert("Wrong! -10 Points");
   }
-  secondQuestion();
+  nextQuestion();
 });
 var button3 = document.querySelector(".btn3");
 button3.addEventListener("click", function () {
   if (button3.textContent === correctAnswer[questionCount]) {
   } else {
     secondsLeft -= 10;
+    alert("Wrong! -10 Points");
   }
-  secondQuestion();
+  nextQuestion();
 });
 var button4 = document.querySelector(".btn4");
 button4.addEventListener("click", function () {
   if (button4.textContent === correctAnswer[questionCount]) {
   } else {
     secondsLeft -= 10;
+    alert("Wrong! -10 Points");
   }
-  secondQuestion();
+  nextQuestion();
 });
+
+// function that runs to input second question in place of the first
+function nextQuestion() {
+  questionCount++;
+  question.textContent = questionsArray[questionCount];
+  for (var i = 0; i < 4; i++) {
+    var answer = document.querySelector(".btn" + (i + 1));
+
+    answer.textContent = answersArray[questionCount][i];
+  }
+}
+
+// function lastQuestion() {
+//   questionCount++;
+//   question.textContent = questionsArray[questionCount];
+//   for (var i = 0; i < 4; i++) {
+//     var answer = document.querySelector(".btn" + (i + 1));
+
+//     answer.textContent = answersArray[questionCount][i];
+//   }
+// }
 
 // Timer that counts down from 100 that will act as final score of user
 function setTime() {
