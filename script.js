@@ -29,7 +29,7 @@ var answersArray = [
   "Spain",
   "USA",
 ];
-var correctAnswers = ["Roger Federer", "4"];
+var correctAnswers = ["Roger Federer", "4", "Spain"];
 var questionCount = 0;
 var question = document.querySelector(".question");
 startButton.addEventListener("click", function () {
