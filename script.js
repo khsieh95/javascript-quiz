@@ -8,14 +8,20 @@
 var questContainer = document.querySelector(".question-container");
 var homepage = document.querySelector("#homepage");
 var timeElement = document.querySelector(".time");
+var questCounter = document.querySelector("#question-count");
 var startButton = document.querySelector("#startButton");
 var questionsArray = [
-  "Which of the following is not a javascript data type?",
+  "Which male tennis player holds the title of 'GOAT'?",
   "Which one of these is falsey?",
   "jibberish",
 ];
-var answersArray = ["a", "b", "c", "d", "1", "1", "1", "1", "1", "1"];
-var correctAnswers = ["a", "52"];
+var answersArray = [
+  "Roger Federer",
+  "Novak Djokovic",
+  "Pete Sampras",
+  "Rafael Nadal",
+];
+var correctAnswers = ["Roger Federer", "52"];
 var questionCount = 0;
 var question = document.querySelector(".question");
 startButton.addEventListener("click", function () {
@@ -28,6 +34,7 @@ startButton.addEventListener("click", function () {
     answer.textContent = answersArray[i];
   }
 });
+
 function isCorrect() {
   if (answersArray[i] === correctAnswers[0]) {
     console.log("here");
@@ -46,6 +53,8 @@ var button2 = document.querySelector(".btn2");
 button2.addEventListener("click", function () {
   if (button2.textContent === correctAnswers[0]) {
     console.log("hi");
+  } else {
+    secondsLeft;
   }
 });
 var button3 = document.querySelector(".btn3");
@@ -61,15 +70,20 @@ button4.addEventListener("click", function () {
   }
 });
 
-var secondsLeft = 100;
+var secondsLeft = 5;
 
 function setTime() {
   var timerInterval = setInterval(function () {
     secondsLeft--;
     timeElement.textContent = secondsLeft;
+    if (secondsLeft === 0) {
+      clearInterval(timerInterval);
+      console.log("zero");
+    }
   }, 1000);
 
-  if (secondsLeft === 0) {
-    clearInterval(timerInterval);
-  }
+  //   if (secondsLeft === 0) {
+  //     clearInterval(timerInterval);
+  //     console.log("zero");
+  //   }
 }
