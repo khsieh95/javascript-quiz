@@ -5,7 +5,9 @@
 // TODO:Answers will act as the button itself
 // TODO:If question is answered correctly, move on to next question, else, -10 on the timer, move on
 // TODO:If timer hits 0 before the end, your score is 0, else score = timer
+
 var questContainer = document.querySelector(".question-container");
+var secondsLeft = 100;
 var homepage = document.querySelector("#homepage");
 var timeElement = document.querySelector(".time");
 var questCounter = document.querySelector("#question-count");
@@ -20,18 +22,14 @@ var answersArray = [
   "Novak Djokovic",
   "Pete Sampras",
   "Rafael Nadal",
-  "1",
-  "2",
-  "3",
-  "4",
-  "Portugal",
-  "Mexico",
-  "Spain",
-  "USA",
 ];
-var correctAnswers = ["Roger Federer", "4", "Spain"];
+var answersArray2 = ["1", "2", "3", "4"];
+var answersArray3 = ["Portugal", "Mexico", "Spain", "USA"];
+
+// var correctAnswers = ["Roger Federer", "4", "Spain"];
 var questionCount = 0;
 var question = document.querySelector(".question");
+var correctAnswer = "Roger Federer";
 startButton.addEventListener("click", function () {
   setTime();
   homepage.remove();
@@ -43,42 +41,47 @@ startButton.addEventListener("click", function () {
   }
 });
 
-function isCorrect() {
-  if (answersArray[i] === correctAnswers[0]) {
-    console.log("here");
+function nextQuestion() {
+  question.textContent = questionsArray[1];
+  for (var i = 0; i < 4; i++) {
+    var answer = document.querySelector(".btn" + (i + 1));
+    answer.textContent = answersArray2[i];
   }
-  console.log(i);
 }
 
 var button1 = document.querySelector(".btn1");
 button1.addEventListener("click", function () {
-  if (button1.textContent === correctAnswers[0]) {
-    console.log("hi");
-    questionCount++;
+  if (button1.textContent === correctAnswer) {
+  } else {
+    secondsLeft -= 10;
   }
+  nextQuestion();
 });
 var button2 = document.querySelector(".btn2");
 button2.addEventListener("click", function () {
-  if (button2.textContent === correctAnswers[0]) {
+  if (button2.textContent === correctAnswers) {
     console.log("hi");
   } else {
-    secondsLeft;
+    secondsLeft -= 10;
   }
+  nextQuestion();
 });
 var button3 = document.querySelector(".btn3");
 button3.addEventListener("click", function () {
-  if (button3.textContent === correctAnswers[0]) {
-    console.log("hi");
+  if (button3.textContent === correctAnswers) {
+  } else {
+    secondsLeft -= 10;
   }
+  nextQuestion();
 });
 var button4 = document.querySelector(".btn4");
 button4.addEventListener("click", function () {
-  if (button4.textContent === correctAnswers[0]) {
-    console.log("hi");
+  if (button4.textContent === correctAnswers) {
+  } else {
+    secondsLeft -= 10;
   }
+  nextQuestion();
 });
-
-var secondsLeft = 100;
 
 function setTime() {
   var timerInterval = setInterval(function () {
