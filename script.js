@@ -13,7 +13,7 @@ var startButton = document.querySelector("#startButton");
 var questionsArray = [
   "Which male tennis player holds the title of 'GOAT'?",
   "How many Grand Slams are there?",
-  "jibberish",
+  "Where is Rafael Nadal from?",
 ];
 var answersArray = [
   "Roger Federer",
@@ -24,8 +24,12 @@ var answersArray = [
   "2",
   "3",
   "4",
+  "Portugal",
+  "Mexico",
+  "Spain",
+  "USA",
 ];
-var correctAnswers = ["Roger Federer", "52"];
+var correctAnswers = ["Roger Federer", "4"];
 var questionCount = 0;
 var question = document.querySelector(".question");
 startButton.addEventListener("click", function () {
