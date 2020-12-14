@@ -12,7 +12,7 @@ var questCounter = document.querySelector("#question-count");
 var startButton = document.querySelector("#startButton");
 var questionsArray = [
   "Which male tennis player holds the title of 'GOAT'?",
-  "Which one of these is falsey?",
+  "How many Grand Slams are there?",
   "jibberish",
 ];
 var answersArray = [
@@ -20,6 +20,10 @@ var answersArray = [
   "Novak Djokovic",
   "Pete Sampras",
   "Rafael Nadal",
+  "1",
+  "2",
+  "3",
+  "4",
 ];
 var correctAnswers = ["Roger Federer", "52"];
 var questionCount = 0;
@@ -70,7 +74,7 @@ button4.addEventListener("click", function () {
   }
 });
 
-var secondsLeft = 5;
+var secondsLeft = 100;
 
 function setTime() {
   var timerInterval = setInterval(function () {
@@ -81,9 +85,4 @@ function setTime() {
       console.log("zero");
     }
   }, 1000);
-
-  //   if (secondsLeft === 0) {
-  //     clearInterval(timerInterval);
-  //     console.log("zero");
-  //   }
 }
