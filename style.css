@@ -1,3 +1,7 @@
 .question-container {
   display: none;
 }
+
+.final-score {
+  display: none;
+}
