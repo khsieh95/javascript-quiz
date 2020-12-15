@@ -18,6 +18,7 @@ var buttonTwoEl = document.querySelector(".btn2");
 var buttonThreeEl = document.querySelector(".btn3");
 var buttonFourEl = document.querySelector(".btn4");
 var finalScore = document.querySelector(".final-score");
+var stopTimer = false;
 
 var secondsLeft = 100;
 var questionIndex = 0;
@@ -46,7 +47,7 @@ var questionsList = [
 
 function startQuizSelected() {
   startTimer();
-  homepage.remove();
+  homepageEl.remove();
   questContainerEl.classList.remove("question-container");
   questionEl.textContent = questionsList[0].question;
   for (var i = 0; i < 4; i++) {
@@ -113,25 +114,32 @@ function nextQuestion() {
 }
 
 function endQuiz() {
-  console.log("end of quiz");
   // Display results
+  console.log("hi bryan");
   finalScore.style.display = "block";
   // Stop timer when this function runs
+  stopTimer = true;
   // Local storage
   // Hide Questions
+  questContainerEl.setAttribute("class", "hide");
 }
 
 // Timer that counts down from 100 that will act as final score of user
 function startTimer() {
-  var timerInterval = setInterval(function () {
-    secondsLeft--;
-    timeEl.textContent = secondsLeft;
-    if (secondsLeft === 0) {
-      clearInterval(timerInterval);
-      console.log("zero");
-    }
-  }, 1000);
+  if (stopTimer === false) {
+    var timerInterval = setInterval(function () {
+      secondsLeft--;
+      timeEl.textContent = secondsLeft;
+      if (secondsLeft === 0 || stopTimer === true) {
+        clearInterval(timerInterval);
+      }
+    }, 1000);
+  }
 }
+
+// function saveHighScore(){
+//   var initials = initialsEl.
+// }
 
 // Start button that starts the quiz when user is ready
 startButton.addEventListener("click", startQuizSelected);
