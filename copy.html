@@ -1,0 +1,10 @@
+function nextQuestion() { questionCount++; question.textContent =
+questionsArray[questionCount]; for (var i = 0; i < answersArray.length; i++) {
+var answer = document.querySelector(".btn" + (i + 1)); answer.textContent =
+answersArray[questionCount][i]; // If questionCount is > questionArray.Length
+then end quiz // if (questionCount > answersArray.length) { // endOfQuiz(); // }
+} } // function endOfQuiz() { // // Display results // var finalScore =
+document.querySelector(".final-score"); // finalScore.style.display = "block";
+// // If this function is run, stop the timer // clearInterval(timerInterval);
+// // Local storage // // Hide questions // var questionsEl = questionsArray; //
+questionsEl.setAttribute("class", "hide"); // }

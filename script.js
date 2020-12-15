@@ -7,105 +7,135 @@
 // TODO:If timer hits 0 before the end, your score is 0, else score = timer
 
 // Set global variables
-var questContainer = document.querySelector(".question-container");
+var questContainerEl = document.querySelector(".question-container");
+var homepageEl = document.querySelector("#homepage");
+var timeEl = document.querySelector(".time");
+var questCounterEl = document.querySelector("#question-count");
+var startButtonEl = document.querySelector("#startButton");
+var questionEl = document.querySelector(".question");
+var buttonOneEl = document.querySelector(".btn1");
+var buttonTwoEl = document.querySelector(".btn2");
+var buttonThreeEl = document.querySelector(".btn3");
+var buttonFourEl = document.querySelector(".btn4");
+
 var secondsLeft = 100;
-var homepage = document.querySelector("#homepage");
-var timeElement = document.querySelector(".time");
-var questCounter = document.querySelector("#question-count");
-var startButton = document.querySelector("#startButton");
-var questionsArray = [
-  "Which male tennis player holds the title of 'GOAT'?",
-  "How many Grand Slams are there?",
-  "Where is Rafael Nadal from?",
+var questionIndex = 0;
+var questionsList = [
+  {
+    question: "Which male tennis player holds the title of 'GOAT'?",
+    answers: [
+      "Roger Federer",
+      "Novak Djokovic",
+      "Pete Sampras",
+      "Rafael Nadal",
+    ],
+    correctAnswer: "Roger Federer",
+  },
+  {
+    question: "How many Grand Slams are there?",
+    answers: ["1", "2", "3", "4"],
+    correctAnswer: "4",
+  },
+  {
+    question: "Where is Rafael Nadal from?",
+    answers: ["Portugal", "Mexico", "Spain", "USA"],
+    correctAnswer: "Spain",
+  },
 ];
-var answersArray = [
-  ["Roger Federer", "Novak Djokovic", "Pete Sampras", "Rafael Nadal"],
-  ["1", "2", "3", "4"],
-  ["Portugal", "Mexico", "Spain", "USA"],
-];
-var questionCount = 0;
-var question = document.querySelector(".question");
-var correctAnswer = ["Roger Federer", "4", "Spain"];
 
-// Start button that starts the quiz when user is ready
-startButton.addEventListener("click", function () {
-  setTime();
+function startQuizSelected() {
+  startTimer();
   homepage.remove();
-  questContainer.classList.remove("question-container");
-  question.textContent = questionsArray[0];
+  questContainerEl.classList.remove("question-container");
+  questionEl.textContent = questionsList[0].question;
   for (var i = 0; i < 4; i++) {
     var answer = document.querySelector(".btn" + (i + 1));
-    answer.textContent = answersArray[questionCount][i];
-  }
-});
-
-// Buttons and functions that will follow the question
-var button1 = document.querySelector(".btn1");
-button1.addEventListener("click", function () {
-  if (button1.textContent === correctAnswer[questionCount]) {
-  } else {
-    secondsLeft -= 10;
-    alert("Wrong! -10 Points");
-  }
-  nextQuestion();
-});
-var button2 = document.querySelector(".btn2");
-button2.addEventListener("click", function () {
-  if (button2.textContent === correctAnswer[questionCount]) {
-  } else {
-    secondsLeft -= 10;
-    alert("Wrong! -10 Points");
-  }
-  nextQuestion();
-});
-var button3 = document.querySelector(".btn3");
-button3.addEventListener("click", function () {
-  if (button3.textContent === correctAnswer[questionCount]) {
-  } else {
-    secondsLeft -= 10;
-    alert("Wrong! -10 Points");
-  }
-  nextQuestion();
-});
-var button4 = document.querySelector(".btn4");
-button4.addEventListener("click", function () {
-  if (button4.textContent === correctAnswer[questionCount]) {
-  } else {
-    secondsLeft -= 10;
-    alert("Wrong! -10 Points");
-  }
-  nextQuestion();
-});
-
-// function that runs to input second question in place of the first
-function nextQuestion() {
-  questionCount++;
-  question.textContent = questionsArray[questionCount];
-  for (var i = 0; i < 4; i++) {
-    var answer = document.querySelector(".btn" + (i + 1));
-
-    answer.textContent = answersArray[questionCount][i];
+    answer.textContent = questionsList[questionIndex].answers[i];
   }
 }
 
-// function lastQuestion() {
-//   questionCount++;
-//   question.textContent = questionsArray[questionCount];
-//   for (var i = 0; i < 4; i++) {
-//     var answer = document.querySelector(".btn" + (i + 1));
+function handleWrongAnswerSelected() {
+  secondsLeft -= 10;
+  alert("Wrong! -10 Points");
+}
 
-//     answer.textContent = answersArray[questionCount][i];
-//   }
-// }
+function buttonOneSelected() {
+  if (buttonOneEl.textContent !== questionsList[questionIndex].correctAnswer) {
+    handleWrongAnswerSelected();
+  }
+
+  nextQuestion();
+}
+
+function buttonTwoSelected() {
+  if (buttonTwoEl.textContent === questionsList[questionIndex].correctAnswer) {
+  } else {
+    handleWrongAnswerSelected();
+  }
+  nextQuestion();
+}
+
+function buttonThreeSelected() {
+  if (
+    buttonThreeEl.textContent === questionsList[questionIndex].correctAnswer
+  ) {
+  } else {
+    handleWrongAnswerSelected();
+  }
+  nextQuestion();
+}
+
+function buttonFourSelected() {
+  if (buttonFourEl.textContent === questionsList[questionIndex].correctAnswer) {
+  } else {
+    handleWrongAnswerSelected();
+  }
+  nextQuestion();
+}
+
+// function that runs to input second question in place of the first
+
+function nextQuestion() {
+  questionIndex++;
+
+  if (questionIndex > questionsList.length - 1) {
+    endQuiz();
+    return;
+  }
+
+  questionEl.textContent = questionsList[questionIndex].question;
+  for (var i = 0; i < questionsList.length + 1; i++) {
+    var answer = document.querySelector(".btn" + (i + 1));
+    answer.textContent = questionsList[questionIndex].answers[i];
+    // If questionIndex is > questionArray.Length then end quiz
+  }
+}
+
+function endQuiz() {
+  console.log("end of quiz");
+  // Display results
+  // Stop timer when this function runs
+  // Local storage
+  // Hide Questions
+}
 
 // Timer that counts down from 100 that will act as final score of user
-function setTime() {
+function startTimer() {
   var timerInterval = setInterval(function () {
     secondsLeft--;
-    timeElement.textContent = secondsLeft;
+    timeEl.textContent = secondsLeft;
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
       console.log("zero");
     }
   }, 1000);
 }
+
+// Start button that starts the quiz when user is ready
+startButton.addEventListener("click", startQuizSelected);
+
+// Buttons and functions that will follow the question
+buttonOneEl.addEventListener("click", buttonOneSelected);
+buttonTwoEl.addEventListener("click", buttonTwoSelected);
+buttonThreeEl.addEventListener("click", buttonThreeSelected);
+buttonFourEl.addEventListener("click", buttonFourSelected);
