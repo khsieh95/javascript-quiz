@@ -17,6 +17,7 @@ var buttonOneEl = document.querySelector(".btn1");
 var buttonTwoEl = document.querySelector(".btn2");
 var buttonThreeEl = document.querySelector(".btn3");
 var buttonFourEl = document.querySelector(".btn4");
+var finalScore = document.querySelector(".final-score");
 
 var secondsLeft = 100;
 var questionIndex = 0;
@@ -114,6 +115,7 @@ function nextQuestion() {
 function endQuiz() {
   console.log("end of quiz");
   // Display results
+  finalScore.style.display = "block";
   // Stop timer when this function runs
   // Local storage
   // Hide Questions
