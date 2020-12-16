@@ -19,7 +19,10 @@ var buttonThreeEl = document.querySelector(".btn3");
 var buttonFourEl = document.querySelector(".btn4");
 var finalScore = document.querySelector(".final-score");
 var timerContainer = document.querySelector(".timer-container");
+var submitButtonEl = document.querySelector("#submit");
+var initialsEl = document.querySelector("#initials");
 var stopTimer = false;
+var userValues = JSON.parse(localStorage.getItem("userValues") || "[]");
 
 var secondsLeft = 100;
 var questionIndex = 0;
@@ -129,6 +132,7 @@ function endQuiz() {
 // Timer that counts down from 100 that will act as final score of user
 function startTimer() {
   if (stopTimer === false) {
+    timerContainer.textContent = secondsLeft;
     var timerInterval = setInterval(function () {
       secondsLeft--;
       timerContainer.textContent = secondsLeft;
@@ -139,12 +143,22 @@ function startTimer() {
   }
 }
 
-// function saveHighScore(){
-//   var initials = initialsEl.
-// }
+function saveHighScore(event) {
+  event.preventDefault();
+
+  var userScore = { Name: [initialsEl.value], Score: [secondsLeft] };
+
+  userValues.push(userScore);
+  console.log(userValues);
+  localStorage.setItem("userValues", JSON.stringify(userValues));
+  console.log(localStorage);
+}
 
 // Start button that starts the quiz when user is ready
 startButton.addEventListener("click", startQuizSelected);
+
+// Submit Button that adds input to local storage
+submitButtonEl.addEventListener("click", saveHighScore);
 
 // Buttons and functions that will follow the question
 buttonOneEl.addEventListener("click", buttonOneSelected);
