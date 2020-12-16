@@ -7,17 +7,22 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="timer-container"></div>
     <main class="container">
       <h1 class="time"></h1>
       <div id="homepage">
         <h1>Are You Ready?</h1>
         <p>
           Instructions: This is a very short multiple-choice quiz about tennis.
-          The timer will start as soon as you hit start, and the final timer
-          will be your score! After each wrong answer clicked you will not
+          The timer will start as soon as you hit start, and the final time will
+          be your score! After each wrong answer clicked, you will be prompted
+          to the next question but -10 to your score.
+          <br />
+          <strong>Good Luck!</strong>
         </p>
         <button id="startButton">Start</button>
       </div>
+
       <div class="question-container">
         <p id="question-count"></p>
         <p class="question"></p>
@@ -27,9 +32,11 @@
         <button class="btn4"></button>
       </div>
       <div class="final-score">
-        <h1>You're done!</h1>
-        <input type="text" id="initials" placeholder="Enter Intials" />
-        <input type="submit" />
+        <row>
+          <h1>You're done!</h1>
+          <input type="text" id="initials" placeholder="Enter Intials" />
+          <input type="submit" />
+        </row>
       </div>
 
       <script src="script.js"></script>

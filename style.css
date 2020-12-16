@@ -1,5 +1,20 @@
+body {
+  background-image: url(https://www.perfect-tennis.com/wp-content/uploads/2019/02/tennis-court-dimensions-780x470.jpg);
+}
+
 .question-container {
-  display: none;
+  margin: 0 auto;
+  margin-top: 200px;
+  padding: 25px;
+}
+
+.timer-container {
+  background-color: white;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  width: 65px;
+  font-size: 60px;
 }
 
 .final-score {
@@ -8,4 +23,27 @@
 
 .hide {
   display: none;
+}
+
+.container {
+  width: 1024px;
+  background-color: white;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 1%;
+}
+
+#homepage {
+  display: block;
+  margin: 0 auto;
+  margin-top: 200px;
+  padding: 25px;
+}
+
+.final-score {
+  text-align: center;
+  width: 720px;
+  padding: 15px;
+  margin: 0 auto;
 }

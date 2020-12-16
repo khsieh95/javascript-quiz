@@ -18,6 +18,7 @@ var buttonTwoEl = document.querySelector(".btn2");
 var buttonThreeEl = document.querySelector(".btn3");
 var buttonFourEl = document.querySelector(".btn4");
 var finalScore = document.querySelector(".final-score");
+var timerContainer = document.querySelector(".timer-container");
 var stopTimer = false;
 
 var secondsLeft = 100;
@@ -44,11 +45,12 @@ var questionsList = [
     correctAnswer: "Spain",
   },
 ];
-
+questContainerEl.style.display = "none";
 function startQuizSelected() {
   startTimer();
   homepageEl.remove();
-  questContainerEl.classList.remove("question-container");
+  questContainerEl.style.display = "block";
+  // questContainerEl.classList.remove("question-container");
   questionEl.textContent = questionsList[0].question;
   for (var i = 0; i < 4; i++) {
     var answer = document.querySelector(".btn" + (i + 1));
@@ -115,13 +117,13 @@ function nextQuestion() {
 
 function endQuiz() {
   // Display results
-  console.log("hi bryan");
+  console.log("hi kevin");
   finalScore.style.display = "block";
   // Stop timer when this function runs
   stopTimer = true;
   // Local storage
   // Hide Questions
-  questContainerEl.setAttribute("class", "hide");
+  questContainerEl.style.display = "none";
 }
 
 // Timer that counts down from 100 that will act as final score of user
@@ -129,7 +131,7 @@ function startTimer() {
   if (stopTimer === false) {
     var timerInterval = setInterval(function () {
       secondsLeft--;
-      timeEl.textContent = secondsLeft;
+      timerContainer.textContent = secondsLeft;
       if (secondsLeft === 0 || stopTimer === true) {
         clearInterval(timerInterval);
       }
