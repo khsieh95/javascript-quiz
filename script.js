@@ -60,14 +60,15 @@ function startQuizSelected() {
     answer.textContent = questionsList[questionIndex].answers[i];
   }
 }
-
+// If wrong answer is selected
 function handleWrongAnswerSelected() {
   secondsLeft -= 10;
   alert("Wrong! -10 Points");
 }
 
 function buttonOneSelected() {
-  if (buttonOneEl.textContent !== questionsList[questionIndex].correctAnswer) {
+  if (buttonOneEl.textContent === questionsList[questionIndex].correctAnswer) {
+  } else {
     handleWrongAnswerSelected();
   }
 
