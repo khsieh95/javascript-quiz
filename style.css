@@ -32,6 +32,8 @@ body {
   margin: 0 auto;
   text-align: center;
   border-radius: 1%;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 #homepage {
