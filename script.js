@@ -48,12 +48,14 @@ var questionsList = [
     correctAnswer: "Spain",
   },
 ];
+// Display question-container to none until start button clicked
 questContainerEl.style.display = "none";
+
+//On click, start timer, remove homepage, begin quiz, for loop to update button content
 function startQuizSelected() {
   startTimer();
   homepageEl.remove();
   questContainerEl.style.display = "block";
-  // questContainerEl.classList.remove("question-container");
   questionEl.textContent = questionsList[0].question;
   for (var i = 0; i < 4; i++) {
     var answer = document.querySelector(".btn" + (i + 1));
@@ -66,6 +68,7 @@ function handleWrongAnswerSelected() {
   alert("Wrong! -10 Points");
 }
 
+// Functions for button 1-4
 function buttonOneSelected() {
   if (buttonOneEl.textContent === questionsList[questionIndex].correctAnswer) {
   } else {
@@ -102,35 +105,34 @@ function buttonFourSelected() {
 }
 
 // function that runs to input second question in place of the first
-
 function nextQuestion() {
   questionIndex++;
-
+  // If questionIndex is > questionArray.Length then end quiz
   if (questionIndex > questionsList.length - 1) {
     endQuiz();
     return;
   }
-
+  // For loop runs to keep pushing answers/content to new question
   questionEl.textContent = questionsList[questionIndex].question;
   for (var i = 0; i < questionsList.length + 1; i++) {
     var answer = document.querySelector(".btn" + (i + 1));
     answer.textContent = questionsList[questionIndex].answers[i];
-    // If questionIndex is > questionArray.Length then end quiz
   }
 }
 
+// Function that endsQuiz and removes question container
 function endQuiz() {
   // Display results
   console.log("hi kevin");
   finalScore.style.display = "block";
   // Stop timer when this function runs
   stopTimer = true;
-  // Local storage
+
   // Hide Questions
   questContainerEl.style.display = "none";
 }
 
-// Timer that counts down from 100 that will act as final score of user
+// Timer that counts down from 100 that will act as final score of user when stopped
 function startTimer() {
   if (stopTimer === false) {
     timerContainer.textContent = secondsLeft;
@@ -144,6 +146,7 @@ function startTimer() {
   }
 }
 
+// Function to push localStorage when submit button is pressed
 function saveHighScore(event) {
   event.preventDefault();
 
